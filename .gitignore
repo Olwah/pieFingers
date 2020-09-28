@@ -1,0 +1,5 @@
+node_modules
+config.env
+pieFingers.code-workspace
+index.html
+.cache

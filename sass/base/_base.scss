@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px = 62.5% -> 1rem = 10px
+    background-color: $color-white;
+}
+
+body {
+    font-family: $font-primary;
+}
+
+.wrapper {
+    //display: grid;
+    //grid-template-columns:
+    //    [full-start] minmax(15rem, 1fr) [center-start] repeat(9, [col-start] minmax(min-content, 14rem) //[col-end])
+    //    [center-end] minmax(15rem, 1fr) [full-end];
+
+    &__hero {
+        background-image: linear-gradient(to right bottom, rgba(252, 231, 153, 0.2), rgba(219, 192, 96, 0.8)),
+            url(../img/meadowsInTheMountain.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100vh;
+    }
+}

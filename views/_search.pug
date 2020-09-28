@@ -1,0 +1,43 @@
+.wrapper__hero
+    header.header
+        .header__logo
+            img.header__logo-img(src='#' alt='pieFingers Logo')
+        .header__info
+            h1 One Search
+            h2
+                b ALL
+                |  the results
+        .header__streams
+            .header__stream
+                img.header__stream-img(src='/img/soundcloud.png' alt='Soundcloud')
+            .header__stream
+                img.header__stream-img(src='/img/youtube.png' alt='YouTube')
+            .header__stream
+                img.header__stream-img(src='/img/spotify.png' alt='Spotify')
+            .header__stream
+                img.header__stream-img(src='/img/discogs.png' alt='Discogs')
+    section.search
+        .search__bar
+            input#searchField.search__field(type='text' placeholder='e.g. Roy Ayers - Poo Poo La La')
+            button.search__btn
+                img(src='/img/searchBtn.png' alt='Submit!')
+        .search__close
+            img(src='/img/searchBtn.png' alt='Close Settings')
+        button.search__advanced.btn-scale Toggle Platforms
+        .search__options
+            .search__option
+                input#scCheck.search__provider(type='checkbox' name='scCheck' checked='')
+                label.search__label(for='scCheck' data-off='off' data-on='on')
+                    img#sc-toggle.search__option-icon(src='/img/soundcloud-toggle.png' alt='Toggle SoundCloud')
+            .search__option
+                input#ytCheck.search__provider(type='checkbox' name='ytCheck' checked='')
+                label.search__label(for='ytCheck' data-off='off' data-on='on')
+                    img#yt-toggle.search__option-icon(src='/img/youtube-toggle.png' alt='Toggle YouTube')
+            .search__option
+                input#syCheck.search__provider(type='checkbox' name='syCheck' checked='')
+                label.search__label(for='syCheck' data-off='off' data-on='on')
+                    img#sy-toggle.search__option-icon(src='/img/spotify-toggle.png' alt='Toggle Spotify')
+            .search__option
+                input#dgCheck.search__provider(type='checkbox' name='dgCheck' checked='')
+                label.search__label(for='dgCheck' data-off='off' data-on='on')
+                    img#dg-toggle.search__option-icon(src='/img/discogs-toggle.png' alt='Toggle Discogs')

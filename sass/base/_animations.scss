@@ -1,0 +1,15 @@
+// Currently not working...
+@keyframes toggleSearchSliders {
+    0% {
+        opacity: 1;
+        transform: translateX(4rem);
+    }
+    25%,
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-4rem);
+    }
+}

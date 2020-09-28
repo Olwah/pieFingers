@@ -1,0 +1,276 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  background-color: #fff; }
+
+body {
+  font-family: "Archivo", sans-serif; }
+
+.wrapper__hero {
+  background-image: linear-gradient(to right bottom, rgba(252, 231, 153, 0.2), rgba(219, 192, 96, 0.8)), url(../img/meadowsInTheMountain.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh; }
+
+@keyframes toggleSearchSliders {
+  0% {
+    opacity: 1;
+    transform: translateX(4rem); }
+  25%,
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: translateX(-4rem); } }
+
+h1 {
+  font-size: 7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1.5;
+  margin-bottom: 3rem; }
+
+h2 {
+  font-size: 5rem;
+  font-weight: 600;
+  text-transform: uppercase; }
+
+.header {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  padding: 1rem; }
+  .header__logo {
+    width: 25vw;
+    height: 100%; }
+    .header__logo-img {
+      width: 100%;
+      height: 100%; }
+  .header__info {
+    width: 50vw;
+    height: 100%;
+    line-height: 1; }
+    .header__info h2 {
+      text-align: right;
+      transform: translateX(20rem); }
+  .header__streams {
+    display: flex;
+    align-items: flex-start;
+    width: 25vw;
+    height: 100%;
+    padding-top: 2rem; }
+  .header__stream {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    margin-right: 3rem; }
+    .header__stream-img {
+      width: 100%;
+      height: 100%; }
+
+.search {
+  background-image: linear-gradient(to bottom, transparent, rgba(255, 245, 238, 0.3));
+  position: relative;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem; }
+  .search__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2rem; }
+  .search__field {
+    width: 30vw;
+    height: 4rem;
+    font-size: 2rem;
+    background-color: seashell;
+    color: #333;
+    border: 2px solid #878787;
+    border-radius: 2.5rem;
+    box-shadow: 1px 1px 6px #878787;
+    padding: 2rem; }
+    .search__field::placeholder {
+      color: #333;
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.5;
+      padding: 0 0.5rem;
+      opacity: 0.4; }
+    .search__field:focus {
+      outline: none; }
+  .search__btn, .search__btn:link:visited {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-left: 1rem;
+    cursor: pointer;
+    transform: rotate(0) translate(0, 0);
+    transition: transform 0.3s linear; }
+    .search__btn > img, .search__btn:link:visited > img {
+      max-width: 100%;
+      max-height: 100%; }
+    .search__btn:hover, .search__btn:link:visited:hover {
+      transform: rotate(360deg); }
+    .search__btn:active, .search__btn:link:visited:active {
+      transform: translate(1px, 1.5px); }
+    .search__btn:focus, .search__btn:link:visited:focus {
+      outline: none; }
+  .search__close {
+    opacity: 0;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 6.5rem;
+    left: 10.5rem;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: seashell;
+    cursor: pointer;
+    z-index: 5;
+    transition: opacity 0.5s ease-out; }
+    .search__close.active {
+      opacity: 1; }
+    .search__close > img {
+      max-width: 100%;
+      max-height: 100%; }
+  .search__options {
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    transform: translateY(-3.7rem);
+    opacity: 0;
+    transition: opacity 0.7s linear; }
+    .search__options.active {
+      opacity: 1;
+      transition: opacity 2.2s linear; }
+  .search__advanced {
+    background-color: #333;
+    color: seashell;
+    width: 17rem;
+    line-height: 1;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 1px solid seashell;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 1px 1px 6px #878787;
+    z-index: 5;
+    transition: all 1s ease-out;
+    cursor: pointer; }
+    .search__advanced.active {
+      background-color: seashell;
+      color: #333;
+      width: 71%;
+      text-align: left;
+      padding-left: 1.5rem;
+      transform: translateX(-80px);
+      z-index: 0;
+      cursor: default; }
+    .search__advanced:focus {
+      outline: none; }
+  .search__option {
+    display: flex;
+    width: 4rem; }
+    .search__option-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      top: -3px; }
+  .search__label {
+    display: block;
+    position: relative;
+    padding: 1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 2rem;
+    border-radius: 1.8rem;
+    background: #f8f8f8; }
+    .search__label::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 1;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 100%;
+      top: 0;
+      left: 0;
+      right: auto;
+      background: white;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px #dddddd;
+      cursor: pointer; }
+  .search__provider, .search__provider:active {
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    border: none;
+    outline: none; }
+  .search__provider:checked + .search__label::before {
+    left: calc(100% - 2rem);
+    box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, 0.3); }
+  .search__provider + .search__label {
+    box-shadow: inset 0 0 0 0px #ff5500, 0 0 0 2px #dddddd; }
+  .search__provider:checked + .search__label .search__option-icon {
+    transform: translateX(4rem);
+    filter: grayscale(0);
+    transition: all 0.5s linear; }
+  .search__provider + .search__label .search__option-icon {
+    transform: translateX(-4.5rem);
+    filter: grayscale(1);
+    transition: all 0.5s linear; }
+
+#scCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #ff5500, 0 0 0 2px #ff5500; }
+
+#ytCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #ff0000, 0 0 0 2px #ff0000; }
+
+#syCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #1db954, 0 0 0 2px #1db954; }
+
+#dgCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #333, 0 0 0 2px #333; }
+
+.btn-scale {
+  transform: scale(1);
+  transition: all 0.2s linear; }
+  .btn-scale:hover {
+    transform: scale(1.05); }
+
+.soundcloud {
+  background-color: orange;
+  width: 100%;
+  height: 30vh; }
+
+.youtube {
+  background-color: red;
+  width: 100%;
+  height: 30vh; }
+
+.spotify {
+  background-color: green;
+  width: 100%;
+  height: 30vh; }
+
+.discogs {
+  background-color: white;
+  width: 100%;
+  height: 30vh; }
