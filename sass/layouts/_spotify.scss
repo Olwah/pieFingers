@@ -1,5 +1,203 @@
 .spotify {
-    background-color: green;
+    background-color: $color-spotify-black;
+    color: $color-white;
     width: 100%;
-    height: 30vh;
+
+    &__header {
+        height: min-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2.5rem;
+    }
+
+    &__logo {
+        width: 15%;
+
+        & img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    &__title {
+        width: 64.5%;
+        text-align: center;
+    }
+
+    &__user {
+        width: 20.5%;
+        background-color: rgba(0,0,0,.7);
+        border-radius: 2.3rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: .5rem;
+
+        &-title,
+        &-image,
+        &-name {
+            margin-right: 1rem;
+        }
+
+        &-title {
+            color: $color-spotify-grey;
+        }
+
+        &-image {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        &-name {
+            font-size: 1.5rem;
+            line-height: 2.4rem;
+            color: $color-white;
+        }
+
+        & img {
+            max-height: 100%;
+        }
+    }
+
+    &__btn {
+        background-color: $color-spotify-green;
+        color: $color-white;
+        border: 1px solid white;
+    }
+
+    &__results {
+        display: flex;
+        justify-content: space-between;
+        padding: 1rem;
+    }
+
+    &__artists {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
+    &__artist {
+        display: grid;
+        grid-template-columns: 3rem 5rem 30rem 3rem 3rem 8.5rem;
+        justify-content: center;
+        column-gap: 1rem;
+
+        //display: flex;
+        //justify-content: space-between;
+        //align-items: center;
+        border: 1px solid transparent;
+        padding: 1rem;
+        margin: 0.5rem;
+
+        &:hover {
+           background-color: hsla(0,0%,100%,.1);
+           border: 1px solid transparent;
+           border-radius: .4rem;
+        }
+    }
+
+    &__number {
+        color: $color-spotify-grey;
+        font-size: 1.6rem;
+        line-height: 24px;
+        align-self: center;
+    }
+
+    &__number,
+    &__album-art,
+    &__artist-name,
+    &__track-name {
+        margin-right: 1.5rem;
+    }
+
+    &__album-art {
+        width: 4rem;
+        height: 4rem;
+
+        & img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: .5;
+    }
+
+    &__artist-name,
+    &__track-name,
+    &__like,
+    &__add,
+    &__follow {
+        cursor: pointer;
+    }
+
+
+    &__number,
+    &__artist-name,
+    &__track-name {
+        font-weight: 400;
+        letter-spacing: normal;
+        text-transform: none;
+    }
+
+    &__artist-name {
+        font-size: 1.4rem;
+        line-height: 16px;
+        color: $color-spotify-grey;
+    }
+
+    &__track-name {
+        height: 2.5rem;
+        font-size: 1.6rem;
+        line-height: 24px;
+        color: $color-white;
+        overflow: hidden;
+    }
+
+    &__like,
+    &__add,
+    &__follow {
+        align-self: center;
+    }
+
+    &__like,
+    &__add {
+        width: 2rem;
+        height: 2rem;
+        fill: $color-spotify-grey;
+    }
+
+    &__add {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    &__follow {
+        height: 3rem;
+        font-size: 1rem;
+        line-height: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        text-align: center;
+        color: $color-white;
+        background-color: transparent;
+        padding: .7rem 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-sizing: border-box;
+        border-radius: 4px;
+    }
+
+    &__player {
+        width: 50%;
+        padding: 1rem;
+    }
 }

@@ -1,0 +1,41 @@
+extends base
+
+block content
+    main.results
+        section.spotify
+            .spotify__header
+                .spotify__logo
+                    img(src='/img/Spotify_Logo_RGB_White.png' alt='Spotify logo')
+                h3.spotify__title Search Results
+                .spotify__user 
+                    h5.spotify__user-title Current user: 
+                    .spotify__user-image
+                        img(src=`${userData.user_image}`)
+                    .spotify__user-name= `${userData.display_name}`
+            .spotify__results
+                .spotify__artists
+                    each track in resultData
+                        .spotify__artist
+                            .spotify__number= `${track.number}`
+                            .spotify__album-art
+                                img(src=`${track.imgUrl}` alt=`Album arkwork for ${track.trackName} - ${track.artistObj.artistName}`)
+                            .spotify__info
+                                h4.spotify__track-name(id=`${track.id}` data-spotify-track-uri=`${track.uri}`)
+                                    a= track.trackName   
+                                p.spotify__artist-name(id=`${track.artistObj.artistId}`)
+                                    a= track.artistObj.artistName
+                            svg.spotify__like(data-spotify-track-id=`${track.id}`)
+                                use(xlink:href='/img/icons.svg#icon-heart') 
+                            svg.spotify__add
+                                use(xlink:href='/img/icons.svg#icon-plus')
+                            button.spotify__follow(data-spotify-artist-uri=`${track.artistObj.artistUri}`) Follow 
+
+                .spotify__player
+                    - const uri = resultData[0].uri.split(':')[2];
+                    iframe(src=`https://open.spotify.com/embed/track/${uri}` width="100%" height="100%" frameborder="0" allowtransparency="true" allow="encrypted-media")
+        section.soundcloud
+            | soundcloud
+        section.youtube
+            | youtube
+        section.discogs
+            | discogs

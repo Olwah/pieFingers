@@ -9,12 +9,25 @@ html
             title pieFingers | #{title}
 
     body(data-alert=`${alert ? alert : ''}`)
-        // SEARCH
+        //-<div class="loader">
+            <h3 class="loader__text">Cooking up some results!</h3>
+            <div class="loader__img-wrapper">
+                <img src="/img/pie3.gif" alt="loading results...">
+            </div>
+        //-</div>
+
+        //- ACCOUNT / PROFILE
+        include _user
+
+        //- SEARCH
         include _search
 
-        // CONTENT
+        //- AUTHENTICATE
+        include _connectPlatforms
+
+        //- CONTENT
         block content
 
-        // FOOTER
+        //- FOOTER
         include _footer
         script(src="/js/bundle.js")

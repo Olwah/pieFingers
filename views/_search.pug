@@ -1,7 +1,7 @@
 .wrapper__hero
     header.header
         .header__logo
-            img.header__logo-img(src='#' alt='pieFingers Logo')
+            img.header__logo-img(src='/img/pie2.gif' alt='pieFingers Logo')
         .header__info
             h1 One Search
             h2
@@ -18,12 +18,26 @@
                 img.header__stream-img(src='/img/discogs.png' alt='Discogs')
     section.search
         .search__bar
-            input#searchField.search__field(type='text' placeholder='e.g. Roy Ayers - Poo Poo La La')
-            button.search__btn
+            //- Toggles advanced input fields and submit button
+            button.search__advanced.btn-scale +
+            .search__basic
+                input#searchField.search__field(type='text' placeholder='e.g. Roy Ayers - Poo Poo La La')
+            .search__advanced-inputs
+                label(for='searchFieldTrack' class='search__label--advanced') Track Name
+                input#searchFieldTrack.search__field.search__field--advanced(type='text' placeholder='Enter track name...')
+                label(for='searchFieldArtist' class='search__label--advanced') Artist Name
+                input#searchFieldArtist.search__field.search__field--advanced(type='text' placeholder='Enter artist name...')
+            //- Standard search button for single input search
+            //-input#searchBtnStandard.search__btn(type="image" src='/img/searchBtn.png' alt='submit')
+            button#searchBtnStandard.search__btn
+                img(src='/img/searchBtn.png' alt='Submit!')
+            //- Only displayed when advanced inputs are visible
+            //-input#searchBtnAdvanced.search__btn(type="image" src='/img/searchBtn.png' alt='submit')
+            button#searchBtnAdvanced.search__btn
                 img(src='/img/searchBtn.png' alt='Submit!')
         .search__close
             img(src='/img/searchBtn.png' alt='Close Settings')
-        button.search__advanced.btn-scale Toggle Platforms
+        button.search__toggle-platforms.btn-scale Toggle Platforms
         .search__options
             .search__option
                 input#scCheck.search__provider(type='checkbox' name='scCheck' checked='')
@@ -40,4 +54,4 @@
             .search__option
                 input#dgCheck.search__provider(type='checkbox' name='dgCheck' checked='')
                 label.search__label(for='dgCheck' data-off='off' data-on='on')
-                    img#dg-toggle.search__option-icon(src='/img/discogs-toggle.png' alt='Toggle Discogs')
+                    img#dg-toggle.search__option-icon(src='/img/discogs-vinyl-record-mark.png' alt='Toggle Discogs')

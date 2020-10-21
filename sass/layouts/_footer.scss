@@ -1,0 +1,12 @@
+.footer {
+    background-color: $color-discogs;
+
+    &__logo {
+        width: 10vw;
+        height: 12.5vh;
+
+        & img {
+            @include imgMax
+        }
+    }
+}

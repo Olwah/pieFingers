@@ -1,0 +1,60 @@
+.connect {
+    &__platforms {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    &__container {
+        width: 110%;
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-6rem);
+    }
+
+    &__correct-skew {
+        transform: skew(45deg, 0) translateX(2rem);
+    }
+
+    &__spotify,
+    &__youtube,
+    &__soundcloud,
+    &__discogs {
+        width: 25%;
+        height: inherit;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: $color-white;
+        transform: skew(-45deg, 0);
+    }
+
+    &__spotify {
+        background-color: $color-spotify-black;
+    }
+
+    &__youtube {
+        background-color: #303030;
+    }
+
+    &__soundcloud {
+        background-color: $color-soundcloud;
+    }
+
+    &__discogs {
+        background-color: $color-discogs;
+    }
+
+    &__icon {
+        height: 3rem;
+        margin-bottom: 1rem;
+        transform: skew(45deg, 0) translateX(-2rem);
+
+        & img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}

@@ -1,33 +1,39 @@
-const searchClose = document.querySelector('.search__close');
-const searchOptions = document.querySelector('.search__options');
-const searchSettings = document.querySelector('.search__advanced');
-const searchLabel = document.querySelector('.search__label');
-const searchLabels = document.querySelectorAll('.search__label');
-const searchProvider = document.querySelector('.search__provider');
-const searchProviders = document.querySelectorAll('.search__provider');
-const searchProviderIcon = document.querySelector('.search__option-icon');
-const searchProviderIcons = document.querySelectorAll('.search__option-icon');
+import { ds } from './base';
 
-const searchOpsAppear = () => {
-    if (!searchOptions.classList.contains('active')) {
-        searchSettings.classList.toggle('active');
-        searchSettings.classList.toggle('btn-scale');
-        searchSettings.textContent = 'Toggle Platforms:';
+export const toggleAdvancedInputs = () => {
+    ds.searchAdvancedInputs.classList.toggle('is-active');
+    ds.searchBasic.classList.toggle('is-inactive');
+    ds.searchAdvanced.classList.toggle('is-active');
+
+    ds.searchAdvanced.textContent === '+'
+        ? (ds.searchAdvanced.textContent = '-')
+        : (ds.searchAdvanced.textContent = '+');
+
+    ds.searchBtnStandard.classList.toggle('is-inactive');
+    ds.searchBtnAdvanced.classList.toggle('is-active');
+};
+
+export const searchOpsAppear = () => {
+    if (!ds.searchOptions.classList.contains('active')) {
+        ds.searchPlatforms.classList.toggle('active');
+        ds.searchPlatforms.classList.toggle('btn-scale');
+        ds.searchPlatforms.textContent = 'Toggle Platforms:';
         setTimeout(() => {
-            searchOptions.classList.toggle('active');
+            ds.searchOptions.classList.toggle('active');
         }, 500);
         setTimeout(() => {
-            searchClose.classList.toggle('active');
+            ds.searchClose.classList.toggle('active');
         }, 950);
     } else {
-        searchSettings.textContent = 'Toggle Platforms';
-        searchClose.classList.toggle('active');
-        searchOptions.classList.toggle('active');
+        ds.searchPlatforms.textContent = 'Toggle Platforms';
+        ds.searchClose.classList.toggle('active');
+        ds.searchOptions.classList.toggle('active');
         setTimeout(() => {
-            searchSettings.classList.toggle('active');
-            setTimeout(() => searchSettings.classList.toggle('btn-scale'), 1000);
+            ds.searchPlatforms.classList.toggle('active');
+            setTimeout(
+                () => ds.searchPlatforms.classList.toggle('btn-scale'),
+                1000
+            );
         }, 800);
     }
 };
-
-[searchClose, searchSettings].forEach((el) => el.addEventListener('click', searchOpsAppear));

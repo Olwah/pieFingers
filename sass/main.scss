@@ -1,9 +1,11 @@
-@import './base/variables';
-@import './base/base';
-@import './base/mixins';
 @import './base/animations';
+@import './base/variables';
+@import './base/mixins';
+@import './base/base';
 @import './base/typography';
 
+@import './layouts/connect';
+@import './layouts/footer';
 @import './layouts/header';
 @import './layouts/search';
 @import './layouts/results';
@@ -11,3 +13,4 @@
 @import './layouts/youtube';
 @import './layouts/spotify';
 @import './layouts/discogs';
+@import './layouts/user';

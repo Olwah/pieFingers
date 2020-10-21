@@ -16,6 +16,60 @@ body {
     font-family: $font-primary;
 }
 
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 9999;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1.6rem 15rem;
+    -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+
+    &--success {
+        background-color: #20bf6b;
+    }
+
+    &--error {
+        background-color: #eb4d4b;
+    }
+}
+
+.loader {
+    @include absCenter;
+    z-index: 100;
+
+    &__img-wrapper {
+        width: 34rem;
+        height: 31rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    & img {
+        @include imgMax;
+    }
+
+    &__text {
+        position: absolute;
+        bottom: 0;
+        font-size: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+    }
+}
+
+body.loader {
+    opacity: .5;
+}
+
 .wrapper {
     //display: grid;
     //grid-template-columns:
@@ -23,10 +77,25 @@ body {
     //    [center-end] minmax(15rem, 1fr) [full-end];
 
     &__hero {
-        background-image: linear-gradient(to right bottom, rgba(252, 231, 153, 0.2), rgba(219, 192, 96, 0.8)),
+        background-image: linear-gradient(
+                to right bottom,
+                rgba(252, 231, 153, 0.2),
+                rgba(219, 192, 96, 0.8)
+            ),
             url(../img/meadowsInTheMountain.jpg);
         background-repeat: no-repeat;
         background-size: cover;
         height: 100vh;
     }
+}
+
+.btn {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    outline: none;
+    padding: 1rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    cursor: pointer;
 }

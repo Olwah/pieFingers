@@ -1,3 +1,20 @@
+@keyframes toggleSearchSliders {
+  0% {
+    opacity: 1;
+    transform: translateX(4rem); }
+  25%,
+  50% {
+    opacity: 0; }
+  100% {
+    opacity: 1;
+    transform: translateX(-4rem); } }
+
+@keyframes loaderAnimate {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
 *,
 *::before,
 *::after {
@@ -13,70 +30,574 @@ html {
 body {
   font-family: "Archivo", sans-serif; }
 
-.header {
-  background-color: plum;
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 9999;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 1.6rem 15rem;
+  -webkit-box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.25); }
+  .alert--success {
+    background-color: #20bf6b; }
+  .alert--error {
+    background-color: #eb4d4b; }
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100; }
+  .loader__img-wrapper {
+    width: 34rem;
+    height: 31rem;
+    border-radius: 50%;
+    overflow: hidden; }
+  .loader img {
+    max-width: 100%;
+    max-height: 100%; }
+  .loader__text {
+    position: absolute;
+    bottom: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em; }
+
+body.loader {
+  opacity: .5; }
+
+.wrapper__hero {
+  background-image: linear-gradient(to right bottom, rgba(252, 231, 153, 0.2), rgba(219, 192, 96, 0.8)), url(../img/meadowsInTheMountain.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh; }
+
+.btn {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  outline: none;
+  padding: 1rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  cursor: pointer; }
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase; }
+
+h1 {
+  font-size: 7rem;
+  font-weight: 800;
+  line-height: 1.5;
+  margin-bottom: 3rem; }
+
+h2 {
+  font-size: 5rem;
+  font-weight: 600; }
+
+h3 {
+  font-size: 3.5rem;
+  font-weight: 600; }
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600; }
+
+h5 {
+  font-size: 1.2rem;
+  font-weight: 400; }
+
+a,
+a:link,
+a:visited {
+  color: inherit;
+  text-decoration: none; }
+
+.connect__platforms {
   width: 100%;
-  height: 15vh;
+  overflow: hidden; }
+
+.connect__container {
+  width: 110%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-6rem); }
+
+.connect__correct-skew {
+  transform: skew(45deg, 0) translateX(2rem); }
+
+.connect__spotify, .connect__youtube, .connect__soundcloud, .connect__discogs {
+  width: 25%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transform: skew(-45deg, 0); }
+
+.connect__spotify {
+  background-color: #191414; }
+
+.connect__youtube {
+  background-color: #303030; }
+
+.connect__soundcloud {
+  background-color: #ff5500; }
+
+.connect__discogs {
+  background-color: #333; }
+
+.connect__icon {
+  height: 3rem;
+  margin-bottom: 1rem;
+  transform: skew(45deg, 0) translateX(-2rem); }
+  .connect__icon img {
+    max-width: 100%;
+    max-height: 100%; }
+
+.footer {
+  background-color: #333; }
+  .footer__logo {
+    width: 10vw;
+    height: 12.5vh; }
+    .footer__logo img {
+      max-width: 100%;
+      max-height: 100%; }
+
+.header {
+  width: 100%;
+  height: 60vh;
   display: flex;
   align-items: center;
   padding: 1rem; }
   .header__logo {
-    width: 30vw;
+    width: 15vw;
     height: 100%; }
     .header__logo-img {
       max-width: 100%;
       max-height: 100%; }
+  .header__info {
+    width: 55vw;
+    height: 100%;
+    line-height: 1;
+    padding-left: 5rem; }
+    .header__info h2 {
+      text-align: right;
+      transform: translateX(20rem); }
   .header__streams {
     display: flex;
-    justify-content: space-around;
-    align-items: center; }
+    align-items: flex-start;
+    width: 25vw;
+    height: 100%;
+    padding-top: 2rem; }
   .header__stream {
     border-radius: 50%;
     width: 5rem;
-    height: 5rem; }
+    height: 5rem;
+    margin-right: 3rem; }
     .header__stream-img {
       max-width: 100%;
       max-height: 100%; }
 
 .search {
-  background-color: slateblue;
+  background-image: linear-gradient(to bottom, transparent, rgba(255, 245, 238, 0.3));
+  position: relative;
+  height: 40vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 1rem; }
   .search__bar {
+    position: relative;
     display: flex;
     justify-content: center;
-    align-items: center; }
-  .search__field {
-    width: 10rem;
-    height: 4rem;
-    border-radius: 20%; }
-  .search__btn {
-    background-color: lightpink;
-    font-size: 1.5rem;
+    align-items: center;
+    padding-bottom: 2rem; }
+  .search__advanced {
+    background-color: transparent;
+    color: #333;
+    border: none;
     border-radius: 50%;
-    padding: 1rem; }
+    position: absolute;
+    right: 6.5rem;
+    top: 1rem;
+    font-size: 2rem;
+    cursor: pointer; }
+    .search__advanced.is-active {
+      top: 3.5rem; }
+    .search__advanced:focus {
+      outline: none; }
+  .search__basic.is-inactive {
+    display: none; }
+  .search__advanced-inputs {
+    display: none; }
+    .search__advanced-inputs.is-active {
+      display: flex;
+      flex-direction: column; }
+  .search__field {
+    width: 30vw;
+    height: 4rem;
+    font-size: 2rem;
+    background-color: seashell;
+    color: #333;
+    border: 2px solid #b3b3b3;
+    border-radius: 2.5rem;
+    box-shadow: 1px 1px 6px #b3b3b3;
+    padding: 2rem; }
+    .search__field::placeholder {
+      color: #333;
+      font-size: 1.5rem;
+      font-style: italic;
+      line-height: 1.5;
+      padding: 0 0.5rem;
+      opacity: 0.4; }
+    .search__field:focus {
+      outline: none; }
+    .search__field--advanced {
+      margin-bottom: 1rem; }
+  .search__btn, .search__btn:link:visited {
+    width: 4rem;
+    height: 4rem;
+    position: relative;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    margin-left: 1rem;
+    cursor: pointer;
+    transform: rotate(0) translate(0, 0);
+    transition: transform 0.3s linear; }
+    .search__btn > img, .search__btn:link:visited > img {
+      max-width: 100%;
+      max-height: 100%; }
+    .search__btn:hover, .search__btn:link:visited:hover {
+      transform: rotate(360deg); }
+    .search__btn:active, .search__btn:link:visited:active {
+      transform: translate(1px, 1.5px); }
+    .search__btn:focus, .search__btn:link:visited:focus {
+      outline: none; }
+  .search__btn.is-inactive {
+    display: none; }
+  .search__btn#searchBtnAdvanced {
+    display: none; }
+    .search__btn#searchBtnAdvanced.is-active {
+      display: block; }
+  .search__close {
+    opacity: 0;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 6.5rem;
+    left: 10.5rem;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: seashell;
+    cursor: pointer;
+    z-index: 5;
+    transition: opacity 0.5s ease-out; }
+    .search__close.active {
+      opacity: 1; }
+    .search__close > img {
+      max-width: 100%;
+      max-height: 100%; }
   .search__options {
-    display: flex; }
+    width: 50vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    transform: translateY(-3.7rem);
+    opacity: 0;
+    transition: opacity 0.7s linear; }
+    .search__options.active {
+      opacity: 1;
+      transition: opacity 2.2s linear; }
+  .search__toggle-platforms {
+    background-color: #333;
+    color: seashell;
+    width: 17rem;
+    line-height: 1;
+    padding: 1rem;
+    border-radius: 2rem;
+    border: 1px solid seashell;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 1px 1px 6px #b3b3b3;
+    z-index: 5;
+    transition: all 1s ease-out;
+    cursor: pointer; }
+    .search__toggle-platforms.active {
+      background-color: seashell;
+      color: #333;
+      width: 71%;
+      text-align: left;
+      padding-left: 1.5rem;
+      transform: translateX(-80px);
+      z-index: 0;
+      cursor: default; }
+    .search__toggle-platforms:focus {
+      outline: none; }
+  .search__option {
+    display: flex;
+    width: 4rem; }
+    .search__option-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      position: absolute;
+      top: -3px; }
+  .search__label {
+    display: block;
+    position: relative;
+    padding: 1rem;
+    font-size: 1.2rem;
+    width: 100%;
+    height: 2rem;
+    border-radius: 1.8rem;
+    background: #f8f8f8; }
+    .search__label::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: 1;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 100%;
+      top: 0;
+      left: 0;
+      right: auto;
+      background: white;
+      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2), 0 0 0 2px #dddddd;
+      cursor: pointer; }
+    .search__label--advanced {
+      font-size: 1.5rem;
+      font-weight: 600;
+      padding: .5rem; }
+  .search__provider, .search__provider:active {
+    position: absolute;
+    top: 0;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    border: none;
+    outline: none; }
+  .search__provider:checked + .search__label::before {
+    left: calc(100% - 2rem);
+    box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0, 0, 0, 0.3); }
+  .search__provider + .search__label {
+    box-shadow: inset 0 0 0 0px #ff5500, 0 0 0 2px #dddddd; }
+  .search__provider:checked + .search__label .search__option-icon {
+    transform: translateX(4rem);
+    filter: grayscale(0);
+    transition: all 0.5s linear; }
+  .search__provider + .search__label .search__option-icon {
+    transform: translateX(-4.5rem);
+    filter: grayscale(1);
+    transition: all 0.5s linear; }
+
+#scCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #ff5500, 0 0 0 2px #ff5500; }
+
+#ytCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #ff0000, 0 0 0 2px #ff0000; }
+
+#syCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #191414, 0 0 0 2px #191414; }
+
+#dgCheck:checked + .search__label {
+  box-shadow: inset 0 0 0 18px #333, 0 0 0 2px #333; }
+
+.btn-scale {
+  transform: scale(1);
+  transition: all 0.2s linear; }
+  .btn-scale:hover {
+    transform: scale(1.05); }
 
 .soundcloud {
   background-color: orange;
   width: 100%;
   height: 30vh; }
+  .soundcloud__btn {
+    background-color: #ff5500;
+    color: #fff;
+    border: 1px solid white; }
 
 .youtube {
   background-color: red;
   width: 100%;
   height: 30vh; }
+  .youtube__btn {
+    background-color: #ff0000;
+    color: #fff;
+    border: 1px solid white; }
 
 .spotify {
-  background-color: green;
-  width: 100%;
-  height: 30vh; }
+  background-color: #191414;
+  color: #fff;
+  width: 100%; }
+  .spotify__header {
+    height: min-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem; }
+  .spotify__logo {
+    width: 15%; }
+    .spotify__logo img {
+      max-width: 100%;
+      max-height: 100%; }
+  .spotify__title {
+    width: 64.5%;
+    text-align: center; }
+  .spotify__user {
+    width: 20.5%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 2.3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: .5rem; }
+    .spotify__user-title, .spotify__user-image, .spotify__user-name {
+      margin-right: 1rem; }
+    .spotify__user-title {
+      color: #b3b3b3; }
+    .spotify__user-image {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      overflow: hidden; }
+    .spotify__user-name {
+      font-size: 1.5rem;
+      line-height: 2.4rem;
+      color: #fff; }
+    .spotify__user img {
+      max-height: 100%; }
+  .spotify__btn {
+    background-color: #1db954;
+    color: #fff;
+    border: 1px solid white; }
+  .spotify__results {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem; }
+  .spotify__artists {
+    display: flex;
+    flex-direction: column;
+    width: 50%; }
+  .spotify__artist {
+    display: grid;
+    grid-template-columns: 3rem 5rem 30rem 3rem 3rem 8.5rem;
+    justify-content: center;
+    column-gap: 1rem;
+    border: 1px solid transparent;
+    padding: 1rem;
+    margin: 0.5rem; }
+    .spotify__artist:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid transparent;
+      border-radius: .4rem; }
+  .spotify__number {
+    color: #b3b3b3;
+    font-size: 1.6rem;
+    line-height: 24px;
+    align-self: center; }
+  .spotify__number, .spotify__album-art, .spotify__artist-name, .spotify__track-name {
+    margin-right: 1.5rem; }
+  .spotify__album-art {
+    width: 4rem;
+    height: 4rem; }
+    .spotify__album-art img {
+      max-width: 100%;
+      max-height: 100%; }
+  .spotify__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: .5; }
+  .spotify__artist-name, .spotify__track-name, .spotify__like, .spotify__add, .spotify__follow {
+    cursor: pointer; }
+  .spotify__number, .spotify__artist-name, .spotify__track-name {
+    font-weight: 400;
+    letter-spacing: normal;
+    text-transform: none; }
+  .spotify__artist-name {
+    font-size: 1.4rem;
+    line-height: 16px;
+    color: #b3b3b3; }
+  .spotify__track-name {
+    height: 2.5rem;
+    font-size: 1.6rem;
+    line-height: 24px;
+    color: #fff;
+    overflow: hidden; }
+  .spotify__like, .spotify__add, .spotify__follow {
+    align-self: center; }
+  .spotify__like, .spotify__add {
+    width: 2rem;
+    height: 2rem;
+    fill: #b3b3b3; }
+  .spotify__add {
+    width: 3rem;
+    height: 3rem; }
+  .spotify__follow {
+    height: 3rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #fff;
+    background-color: transparent;
+    padding: .7rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+    border-radius: 4px; }
+  .spotify__player {
+    width: 50%;
+    padding: 1rem; }
 
 .discogs {
   background-color: white;
   width: 100%;
   height: 30vh; }
+  .discogs__btn {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid white; }
+
+.user {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15rem;
+  height: 3rem; }
+  .user__logged-out, .user__logged-in {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: inherit;
+    height: inherit;
+    font-size: 1.5rem;
+    padding: .5rem;
+    color: #191414; }
+  .user__hide {
+    display: none; }
+  .user__photo {
+    width: 4rem;
+    height: 4rem;
+    padding: .5rem; }
+    .user__photo img {
+      max-width: 100%;
+      max-height: 100%; }
