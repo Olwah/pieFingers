@@ -7,8 +7,8 @@ const router = express.Router();
 router.use(viewsController.alerts);
 
 router
-    .route('/results/:searchString')
-    .post(spotifyController.checkSpotifyToken, spotifyController.searchAll)
+    .route('/results/searchString/:searchString')
+    .post(spotifyController.checkSpotifyToken,spotifyController.newSearch)
     .get(
         spotifyController.getCurrentUserData,
         spotifyController.getSearchType,
@@ -19,10 +19,11 @@ router
     .route('/results/track/:track/artist/:artist')
     .post(
         spotifyController.checkSpotifyToken,
-        spotifyController.searchTrackArtist
+        spotifyController.newSearch
     )
     .get(
         spotifyController.getCurrentUserData,
+        spotifyController.getSearchType,
         spotifyController.getTrackArtist
     );
 

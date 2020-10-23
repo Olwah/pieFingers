@@ -156,20 +156,8 @@ exports.getCurrentUserData = catchAsync(async (req, res, next) => {
 });
 
 /**** SEARCH FUNCTIONS ****/
-
-// Search tracks whose name, album or artist matches search criteria
-exports.searchAll = catchAsync(async (req, res, next) => {
-    /*
-    console.log(req.body);
-    const { searchString } = req.body.searchData;
-
-    const searchData = await spotifyApi.searchTracks(searchString);
-    console.log(`searchData: ${searchData}`);
-    
-    console.log(`Search by "${searchString}"`, searchData.body);
-    console.log(searchData.body.tracks.items[0]);
-    */
-
+// Posts search params to database
+exports.newSearch = catchAsync(async (req, res, next) => {
     if (!req.body.searchData.searchPlatforms.includes('spotify')) {
         next();
     } else {
@@ -185,24 +173,16 @@ exports.searchAll = catchAsync(async (req, res, next) => {
     }
 });
 
-exports.searchTrackArtist = catchAsync(async (req, res, next) => {
-    if (!req.body.searchData.searchPlatforms.includes('spotify')) {
-        next();
-    } else {
-        const searchData = await Search.create(req.body.searchData);
-        console.log(searchData);
-
-        // 201 code means 'written'
-        res.status(201).json({
-            status: 'success',
-            data: {
-                data: searchData
-            }
-        });
-    }
-});
-
+// Determines whether the search uses the basic input or the advanced input fields
 exports.getSearchType = catchAsync(async (req, res, next) => {
+    // Basic search
+    if (req.params.hasOwnProperty('searchString')) {
+        const { searchString } = req.params;
+        const results = await spotifyApi.searchTracks(searchString);
+        res.locals.results = results;
+        next();
+    } 
+
     // Advanced search
     if (
         req.params.hasOwnProperty('track') &&
@@ -212,39 +192,15 @@ exports.getSearchType = catchAsync(async (req, res, next) => {
         const results = await spotifyApi.searchTracks(
             `track:${track} artist:${artist}`
         );
-        return results;
+        res.locals.results = results;
+        next();
     }
-
-    // Basic search
-    if (req.params.hasOwnProperty('searchString')) {
-        const { searchString } = req.params;
-        const results = await spotifyApi.searchTracks(searchString);
-        return results;
-    }
-    next();  
 });
 
 // Search tracks whose artist's name contains value from searchFieldArtist input, and track name contains value from searchFieldTrack input
 exports.getTrackArtist = catchAsync(async (req, res, next) => {
-    //const { searchData } = req.body;
-    //const { track, artist } = searchData;
-
-    /*
-    if (
-        req.params.hasOwnProperty('track') &&
-        req.params.hasOwnProperty('artist')
-    ) {
-        const { track, artist } = req.params;
-        const results = await spotifyApi.searchTracks(
-            `track:${track} artist:${artist}`
-        );
-    }
-
-    if (req.params.hasOwnProperty('searchString')) {
-        const { searchString } = req.params;
-        const results = await spotifyApi.searchTracks(searchString);
-    }
-    */
+    // 'results' variable passed is based on 'getSearchType' function
+    const results = res.locals.results;
 
     const items = results.body.tracks.items;
     console.log(items);

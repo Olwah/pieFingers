@@ -20,24 +20,16 @@ export const getPlatforms = () => {
 };
 
 export const submitSearch = async (type, searchData) => {
-    /*
-    let url =
-        type === 'basic'
-            ? (url = '/api/v1/search/results')
-            : (url = '/api/v1/search/results/advanced');
-    */
-
     let url = '/api/v1/search/results';
 
     let params =
         type === 'basic'
-            ? (params = `${searchData.searchString}`)
+            ? (params = `searchString/${searchData.searchString}`)
             : (params = `track/${searchData.track}/artist/${searchData.artist}`);
 
     try {
         const res = await axios({
             method: 'POST',
-            //url: `${url}/track/${searchData.track}/artist/${searchData.artist}`,
             url: `${url}/${params}`,
             data: {
                 searchData
@@ -45,12 +37,9 @@ export const submitSearch = async (type, searchData) => {
         });
 
         if (res.data.status === 'success') {
-            console.log(`${url}/${params}`);
             clearLoader();
             renderLoader(ds.body);
-            // NEED TO FIX THIS SO IT REDIRECTS TO THE CORRECT PLACE
             location.assign(
-                //`${url}/track/${searchData.track}/artist/${searchData.artist}`
                 `${url}/${params}`
             );
         }
